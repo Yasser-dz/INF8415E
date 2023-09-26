@@ -1,0 +1,4 @@
+\section{Cluster setup using Application Load Balancer.} \label{T2}
+
+\paragraph{}We created two clusters (target groups) named cluster1 and cluster2. cluster1 targets every t2 instances, while cluster2 targets every m4 instances. These target groups allows us to redirect traffic to the desired type of instance, depending on the rules specified in the Load Balancer.
+\paragraph{}For the Load Balancer, we created an internet-facing Application Load Balancer. We then added a Listener that listens to the HTTP port 80. We specified rules to redirect traffic to the correct clusters, depending on the path that needs to be accessed. The first rule forwards the request to cluster1 if the path is /cluster1, the second rule forwards the request to cluster2 if the path is /cluster2, and the default route returns a fixed response which is a 404 NOT FOUND error, indicating that the routes leads to no specified cluster.

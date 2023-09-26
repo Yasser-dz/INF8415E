@@ -1,0 +1,276 @@
+\pagebreak
+\section{Benchmark results} \label{T3}
+\paragraph{} We performed several measurements on the load balancer, cluster 1 (t2.large instances) and cluster 2 (m4.large instances). We have 6 diagrams representing all interesting data for the comparison of the 2 clusters. First, we calculated the number of requests made over a time interval. We did this for the load balancer as well as for the two clusters. Then, we have 3 diagrams representing the status codes, i.e. all the codes 2XX, 4XX and 5XX of the requests sent previously. Finally, the last diagram represents the average response time of each cluster for the same requests of diagram 1.
+
+\paragraph{} All the data was fetch using Boto3 CloudWatch API. Our script was made to automatically generate latex plots.
+
+
+\begin{center}
+    \textbf{Requests count for the load balancer}\break
+    \begin{tikzpicture}
+        \begin{axis}[
+            date coordinates in=x,
+            xticklabel=\hour:\minute,
+            ymin=0,
+            xlabel=Time,
+            ylabel=RequestCount
+            ]
+            
+            \addplot coordinates {
+                (10-17-2022 21:20, 0.0)
+                (10-17-2022 21:21, 862.0)
+                (10-17-2022 21:22, 638.0)
+                (10-17-2022 21:23, 1699.0)
+                (10-17-2022 21:24, 801.0)
+                (10-17-2022 21:25, 1000.0)
+                (10-17-2022 21:26, 0.0)
+                (10-17-2022 21:27, 0.0)
+                (10-17-2022 21:28, 0.0)
+                (10-17-2022 21:29, 0.0)
+                (10-17-2022 21:30, 0.0)
+            };
+            \legend{
+                Load Balancer
+            }
+        \end{axis}
+    \end{tikzpicture}\\
+    \emph{Figure 3.1 - Requests count for the load balancer}
+\end{center}
+\paragraph{} As we can see in the graph above (figure 3.1), the requests count of the load balancer totals around 5000 requests, which was expected since it includes all requests made to both clusters.\\
+
+\begin{center}
+    \textbf{Requests count for cluster1 and cluster2}\break
+    \begin{tikzpicture}
+        \begin{axis}[
+            date coordinates in=x,
+            xticklabel=\hour:\minute,
+            ymin=0,
+            xlabel=Time,
+            ylabel=RequestCount
+        ]
+            \addplot coordinates {
+                (10-17-2022 21:20, 0.0)
+                (10-17-2022 21:21, 862.0)
+                (10-17-2022 21:22, 638.0)
+                (10-17-2022 21:23, 1000.0)
+                (10-17-2022 21:24, 0.0)
+                (10-17-2022 21:25, 0.0)
+                (10-17-2022 21:26, 0.0)
+                (10-17-2022 21:27, 0.0)
+                (10-17-2022 21:28, 0.0)
+                (10-17-2022 21:29, 0.0)
+                (10-17-2022 21:30, 0.0)
+            };
+            \addplot coordinates {
+                (10-17-2022 21:20, 0.0)
+                (10-17-2022 21:21, 0.0)
+                (10-17-2022 21:22, 0.0)
+                (10-17-2022 21:23, 699.0)
+                (10-17-2022 21:24, 801.0)
+                (10-17-2022 21:25, 1000.0)
+                (10-17-2022 21:26, 0.0)
+                (10-17-2022 21:27, 0.0)
+                (10-17-2022 21:28, 0.0)
+                (10-17-2022 21:29, 0.0)
+                (10-17-2022 21:30, 0.0)
+            };
+            \legend{
+                Cluster 1 (t2), Cluster 2 (m4)
+            }
+        \end{axis}
+    \end{tikzpicture}\\
+    \emph{Figure 3.2 - Requests count for cluster1 and cluster2}
+\end{center}
+
+\paragraph{} This diagram (figure 3.2) shows that each cluster treats the requests similarly because the request count is similar over the time. Both clusters received a total of 2500 requests, which is what we expected since we sent 2500 requests to each route. This means that the load balancing is done effectively for both t2 and m4 instances.\\
+
+
+\begin{center}
+    \textbf{HTTP code 2XX count}\break
+    \begin{tikzpicture}
+        \begin{axis}[
+            date coordinates in=x,
+            xticklabel=\hour:\minute,
+            ymin=0,
+            xlabel=Time,
+            ylabel=HTTPCode\_Target\_2XX\_Count
+        ]
+    
+            \addplot coordinates {
+                (10-17-2022 21:20, 0.0)
+                (10-17-2022 21:21, 862.0)
+                (10-17-2022 21:22, 638.0)
+                (10-17-2022 21:23, 1000.0)
+                (10-17-2022 21:24, 0.0)
+                (10-17-2022 21:25, 0.0)
+                (10-17-2022 21:26, 0.0)
+                (10-17-2022 21:27, 0.0)
+                (10-17-2022 21:28, 0.0)
+                (10-17-2022 21:29, 0.0)
+                (10-17-2022 21:30, 0.0)
+                };
+            
+            \addplot coordinates {
+                (10-17-2022 21:20, 0.0)
+                (10-17-2022 21:21, 0.0)
+                (10-17-2022 21:22, 0.0)
+                (10-17-2022 21:23, 699.0)
+                (10-17-2022 21:24, 801.0)
+                (10-17-2022 21:25, 1000.0)
+                (10-17-2022 21:26, 0.0)
+                (10-17-2022 21:27, 0.0)
+                (10-17-2022 21:28, 0.0)
+                (10-17-2022 21:29, 0.0)
+                (10-17-2022 21:30, 0.0)
+                };
+            \legend{
+                Cluster 1 (t2), Cluster 2 (m4)
+            }
+        \end{axis}
+    \end{tikzpicture}\\
+    \emph{Figure 3.3 - HTTP code 2XX count}
+    \paragraph{} This diagram (figure 3.3) shows that there are as many HTTP status code 2XX as there are requests because the diagram is identical to the diagram of the requests count. This means that there were no errors in the load balancing. This affirmation is confirmed by analyzing the next two diagrams (figures 3.4 and 3.5).
+\end{center}
+
+\begin{multicols}{2}
+    \begin{center}
+        \textbf{HTTP code 4XX count}\break
+        \begin{tikzpicture}[scale=0.75]
+            \begin{axis}[
+                date coordinates in=x,
+                xticklabel=\hour:\minute,
+                ymin=0,
+                xlabel=Time,
+                ylabel=HTTPCode\_Target\_4XX\_Count
+                ]
+            
+                \addplot coordinates {
+                    (10-17-2022 21:20, 0.0)
+                    (10-17-2022 21:21, 0.0)
+                    (10-17-2022 21:22, 0.0)
+                    (10-17-2022 21:23, 0.0)
+                    (10-17-2022 21:24, 0.0)
+                    (10-17-2022 21:25, 0.0)
+                    (10-17-2022 21:26, 0.0)
+                    (10-17-2022 21:27, 0.0)
+                    (10-17-2022 21:28, 0.0)
+                    (10-17-2022 21:29, 0.0)
+                    (10-17-2022 21:30, 0.0)
+                    };
+                
+                \addplot coordinates {
+                    (10-17-2022 21:20, 0.0)
+                    (10-17-2022 21:21, 0.0)
+                    (10-17-2022 21:22, 0.0)
+                    (10-17-2022 21:23, 0.0)
+                    (10-17-2022 21:24, 0.0)
+                    (10-17-2022 21:25, 0.0)
+                    (10-17-2022 21:26, 0.0)
+                    (10-17-2022 21:27, 0.0)
+                    (10-17-2022 21:28, 0.0)
+                    (10-17-2022 21:29, 0.0)
+                    (10-17-2022 21:30, 0.0)
+                    };
+                    
+                \legend{
+                    Cluster 1 (t2), Cluster 2 (m4)
+                }
+            \end{axis}
+        \end{tikzpicture}\\
+        \emph{Figure 3.4 - HTTP code 4XX count}
+    \end{center}
+    \columnbreak
+    \begin{center}
+        \textbf{HTTP code 5XX count}\break
+        \begin{tikzpicture}[scale=0.75]
+            \begin{axis}[
+                date coordinates in=x,
+                xticklabel=\hour:\minute,
+                ymin=0,
+                xlabel=Time,
+                ylabel=HTTPCode\_Target\_5XX\_Count
+                ]
+            
+                \addplot coordinates {
+                    (10-17-2022 21:20, 0.0)
+                    (10-17-2022 21:21, 0.0)
+                    (10-17-2022 21:22, 0.0)
+                    (10-17-2022 21:23, 0.0)
+                    (10-17-2022 21:24, 0.0)
+                    (10-17-2022 21:25, 0.0)
+                    (10-17-2022 21:26, 0.0)
+                    (10-17-2022 21:27, 0.0)
+                    (10-17-2022 21:28, 0.0)
+                    (10-17-2022 21:29, 0.0)
+                    (10-17-2022 21:30, 0.0)
+                };
+                
+                \addplot coordinates {
+                    (10-17-2022 21:20, 0.0)
+                    (10-17-2022 21:21, 0.0)
+                    (10-17-2022 21:22, 0.0)
+                    (10-17-2022 21:23, 0.0)
+                    (10-17-2022 21:24, 0.0)
+                    (10-17-2022 21:25, 0.0)
+                    (10-17-2022 21:26, 0.0)
+                    (10-17-2022 21:27, 0.0)
+                    (10-17-2022 21:28, 0.0)
+                    (10-17-2022 21:29, 0.0)
+                    (10-17-2022 21:30, 0.0)
+                };
+                \legend{
+                    Cluster 1 (t2), Cluster 2 (m4)
+                }
+            \end{axis}
+        \end{tikzpicture}\\
+        \emph{Figure 3.5 - HTTP code 5XX count}
+    \end{center}
+\end{multicols}
+\paragraph{} In above diagrams (figures 3.4 and 3.5), we can see that no error codes 4xx or 5xx were given. That means that no error occurred in any request, which allows us to say that no error has happen while doing our benchmarks.
+\pagebreak
+\begin{center}
+    \textbf{Target average response time}\break
+    \begin{tikzpicture}
+        \begin{axis}[
+            date coordinates in=x,
+            xticklabel=\hour:\minute,
+            ymin=0,
+            xlabel=Time,
+            ylabel=TargetResponseTime (ms)
+            ]
+
+            \addplot coordinates {
+                (10-17-2022 21:20, 0.0)
+                (10-17-2022 21:21, 1.689)
+                (10-17-2022 21:22, 1.76)
+                (10-17-2022 21:23, 1.909)
+                (10-17-2022 21:24, 0.0)
+                (10-17-2022 21:25, 0.0)
+                (10-17-2022 21:26, 0.0)
+                (10-17-2022 21:27, 0.0)
+                (10-17-2022 21:28, 0.0)
+                (10-17-2022 21:29, 0.0)
+                (10-17-2022 21:30, 0.0)
+            };
+        
+            \addplot coordinates {
+                (10-17-2022 21:20, 0.0)
+                (10-17-2022 21:21, 0.0)
+                (10-17-2022 21:22, 0.0)
+                (10-17-2022 21:23, 1.717)
+                (10-17-2022 21:24, 1.789)
+                (10-17-2022 21:25, 1.741)
+                (10-17-2022 21:26, 0.0)
+                (10-17-2022 21:27, 0.0)
+                (10-17-2022 21:28, 0.0)
+                (10-17-2022 21:29, 0.0)
+                (10-17-2022 21:30, 0.0)
+            };
+            \legend{
+                Cluster 1 (t2), Cluster 2 (m4)
+            }
+        \end{axis}
+    \end{tikzpicture}\\
+    \emph{Figure 3.6 - Target average response time for each cluster}\\
+\end{center}
+\paragraph{} This diagram (figure 3.6) shows that the cluster 2 has a slightly better average time of response than the cluster 1. However, the difference is so small that we cannot conclude anything over this. Overall, both clusters seem to perform similarly.

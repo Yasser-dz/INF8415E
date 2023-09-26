@@ -1,0 +1,12 @@
+boto3==1.24.91
+boto3-type-annotations==0.3.1
+botocore==1.27.91
+jmespath==1.0.1
+python-dateutil==2.8.2
+s3transfer==0.6.0
+six==1.16.0
+tomli==2.0.1
+types-awscrt==0.14.7
+types-s3transfer==0.6.0.post4
+typing_extensions==4.4.0
+urllib3==1.26.12

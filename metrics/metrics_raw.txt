@@ -1,0 +1,169 @@
+{
+    "HTTPCode_Target_2XX_Count": {
+        "cluster1": {
+            "Id": "string",
+            "Label": "HTTPCode_Target_2XX_Count",
+            "StatusCode": "Complete",
+            "Timestamps": [
+                "2022-10-18 03:11:00+00:00",
+                "2022-10-18 03:10:00+00:00",
+                "2022-10-18 03:09:00+00:00"
+            ],
+            "Values": [
+                237.0,
+                763.0,
+                1500.0
+            ]
+        },
+        "cluster2": {
+            "Id": "string",
+            "Label": "HTTPCode_Target_2XX_Count",
+            "StatusCode": "Complete",
+            "Timestamps": [
+                "2022-10-18 03:13:00+00:00",
+                "2022-10-18 03:12:00+00:00",
+                "2022-10-18 03:11:00+00:00"
+            ],
+            "Values": [
+                315.0,
+                685.0,
+                1500.0
+            ]
+        }
+    },
+    "HTTPCode_Target_4XX_Count": {
+        "cluster1": {
+            "Id": "string",
+            "Label": "HTTPCode_Target_4XX_Count",
+            "StatusCode": "Complete",
+            "Timestamps": [],
+            "Values": []
+        },
+        "cluster2": {
+            "Id": "string",
+            "Label": "HTTPCode_Target_4XX_Count",
+            "StatusCode": "Complete",
+            "Timestamps": [],
+            "Values": []
+        }
+    },
+    "HTTPCode_Target_5XX_Count": {
+        "cluster1": {
+            "Id": "string",
+            "Label": "HTTPCode_Target_5XX_Count",
+            "StatusCode": "Complete",
+            "Timestamps": [],
+            "Values": []
+        },
+        "cluster2": {
+            "Id": "string",
+            "Label": "HTTPCode_Target_5XX_Count",
+            "StatusCode": "Complete",
+            "Timestamps": [],
+            "Values": []
+        }
+    },
+    "RequestCount": {
+        "cluster1": {
+            "Id": "string",
+            "Label": "RequestCount",
+            "StatusCode": "Complete",
+            "Timestamps": [
+                "2022-10-18 03:13:00+00:00",
+                "2022-10-18 03:12:00+00:00",
+                "2022-10-18 03:11:00+00:00",
+                "2022-10-18 03:10:00+00:00",
+                "2022-10-18 03:09:00+00:00",
+                "2022-10-18 03:08:00+00:00",
+                "2022-10-18 03:07:00+00:00"
+            ],
+            "Values": [
+                0.0,
+                0.0,
+                237.0,
+                763.0,
+                1500.0,
+                0.0,
+                0.0
+            ]
+        },
+        "cluster2": {
+            "Id": "string",
+            "Label": "RequestCount",
+            "StatusCode": "Complete",
+            "Timestamps": [
+                "2022-10-18 03:13:00+00:00",
+                "2022-10-18 03:12:00+00:00",
+                "2022-10-18 03:11:00+00:00",
+                "2022-10-18 03:10:00+00:00",
+                "2022-10-18 03:09:00+00:00",
+                "2022-10-18 03:08:00+00:00",
+                "2022-10-18 03:07:00+00:00"
+            ],
+            "Values": [
+                315.0,
+                685.0,
+                1500.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        "elb": {
+            "Id": "string",
+            "Label": "RequestCount",
+            "StatusCode": "Complete",
+            "Timestamps": [
+                "2022-10-18 03:13:00+00:00",
+                "2022-10-18 03:12:00+00:00",
+                "2022-10-18 03:11:00+00:00",
+                "2022-10-18 03:10:00+00:00",
+                "2022-10-18 03:09:00+00:00",
+                "2022-10-18 03:08:00+00:00",
+                "2022-10-18 03:07:00+00:00"
+            ],
+            "Values": [
+                315.0,
+                685.0,
+                1737.0,
+                763.0,
+                1500.0,
+                0.0,
+                0.0
+            ]
+        }
+    },
+    "TargetResponseTime": {
+        "cluster1": {
+            "Id": "string",
+            "Label": "TargetResponseTime",
+            "StatusCode": "Complete",
+            "Timestamps": [
+                "2022-10-18 03:11:00+00:00",
+                "2022-10-18 03:10:00+00:00",
+                "2022-10-18 03:09:00+00:00"
+            ],
+            "Values": [
+                3.047,
+                1.843,
+                1.814
+            ]
+        },
+        "cluster2": {
+            "Id": "string",
+            "Label": "TargetResponseTime",
+            "StatusCode": "Complete",
+            "Timestamps": [
+                "2022-10-18 03:13:00+00:00",
+                "2022-10-18 03:12:00+00:00",
+                "2022-10-18 03:11:00+00:00"
+            ],
+            "Values": [
+                1.88,
+                1.732,
+                1.622
+            ]
+        }
+    }
+}
